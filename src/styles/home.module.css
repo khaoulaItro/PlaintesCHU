@@ -1,0 +1,7 @@
+.backgroundBox {
+    margin-top: 100px; 
+     background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    padding: 2rem;
+}

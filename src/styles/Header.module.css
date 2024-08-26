@@ -1,0 +1,70 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+ 
+    width: 100vw;
+    background-image: url(https://th.bing.com/th/id/R.ebaf53c28ffbb705e8d4b35f67ba14c6?rik=jSeSE1ZZlqmvmA&pid=ImgRaw&r=0);
+    height: 50px;
+    background-color: rgb(69, 136, 177);
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    padding: 0;
+    /* Remove padding to allow full-width display */
+}
+
+.logo-left,
+.logo-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80%;
+    z-index: 3;
+    /* Ensure logos stay above other content */
+}
+
+.logo-left {
+    left: 10px;
+}
+
+.logo-right {
+    right: 50px;
+}
+
+.header-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Ensure the content takes up the full width */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Background overlay */
+    z-index: 1;
+    overflow: hidden;
+    /* Prevent overflow of content */
+}
+
+.marquee {
+    display: inline-block;
+    padding: 0 30px;
+    color: rgb(222, 227, 220);
+    font-size: 1rem;
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+    /* Marquee effect for text */
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}

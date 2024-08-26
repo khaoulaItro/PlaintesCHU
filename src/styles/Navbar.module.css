@@ -1,0 +1,50 @@
+.navbarContainer {
+    position: fixed;
+    top: 50px;
+    /* Adjust according to the height of your header */
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(26, 133, 214, 0.5) !important;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1;
+    /* Lower z-index than header */
+}
+
+.menuButton {
+    background-color: rgb(64, 155, 212) !important;
+    color: white;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.menuButton:hover {
+    background-color: rgb(7, 68, 128) !important;
+}
+
+.submenuButton {
+    background-color: rgb(64, 155, 212) !important;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.submenuButton:hover {
+    background-color: #043247 !important;
+}
+
+.submenuItem {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+}
