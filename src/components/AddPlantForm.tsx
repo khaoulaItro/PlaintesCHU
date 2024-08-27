@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 
-// Define the type for form data including the new 'plant' field
+
 interface FormData {
   name: string;
   surname: string;
@@ -20,7 +20,7 @@ const AddPlantForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Sending email to the fixed address
+ 
     emailjs.send('service_jgawclq', 'template_gedzw5f', {
     name: form.name,
     surname: form.surname,
@@ -30,7 +30,6 @@ const AddPlantForm: React.FC = () => {
   .then((response) => {
     console.log('Email sent successfully to admin', response.status, response.text);
 
-    // Envoi du mail de confirmation à l'utilisateur
     return emailjs.send('service_jgawclq', 'template_gxh492d', {
       name: form.name,
       surname: form.surname,
@@ -46,7 +45,7 @@ const AddPlantForm: React.FC = () => {
   });
 
 
-    // Close the modal after submission
+    
     handleClose();
   };
 
