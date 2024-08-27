@@ -13,9 +13,13 @@ import ValuesCard from '../components/ValuesCard';
 import Footer from '../components/Footer';
 import MotivationBox from '../components/MotivationBox';
 import emailjs from 'emailjs-com';
-import styles from '../styles/home.module.css';
 
-const Homepage: React.FC = () => {
+interface HomepageProps {
+  darkMode: boolean;
+  toggleDarkMode: () => void;
+}
+
+const Homepage: React.FC<HomepageProps> = ({ darkMode, toggleDarkMode }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [form, setForm] = useState({
     name: '',
@@ -27,10 +31,7 @@ const Homepage: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
+  const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
     setSuccessMessage(null);
@@ -61,12 +62,9 @@ const Homepage: React.FC = () => {
     };
 
     try {
-   
       await emailjs.send('service_jgawclq', 'template_gedzw5f', formObject, 'gTIz9zM9FyaFhrvU3');
-      
-     
       await emailjs.send('service_jgawclq', 'template_gxh492d', formObject, 'gTIz9zM9FyaFhrvU3');
-      
+
       setSuccessMessage('Form submitted successfully! A confirmation email has been sent to you.');
       handleClose();
     } catch (err) {
@@ -76,24 +74,26 @@ const Homepage: React.FC = () => {
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        backgroundColor: darkMode ? '#121212' : '#f5f5f5',
+        color: darkMode ? '#ffffff' : '#000000',
+        minHeight: '100vh',
+        padding: '20px',
+        transition: 'background-color 0.3s, color 0.3s'
+      }}
+    >
       <Box sx={{ position: 'fixed', width: '100%', top: 0, left: 0, zIndex: 1100 }}>
-        <Navbar />
+        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <Header />
       </Box>
 
-      <Box sx={{ marginTop: '100px', padding: '20px' }}>
+      <Box sx={{ marginTop: '100px' }}>
         <Box sx={{ display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
           <CustomCard />
         </Box>
 
-        <Box
-          sx={{
-            marginTop: '20px', 
-            position: 'relative',
-            zIndex: 1,
-          }}
-        >
+        <Box sx={{ marginTop: '20px', position: 'relative', zIndex: 1 }}>
           <MotivationBox onOpenForm={handleOpen} />
           <ValuesCard />
         </Box>
@@ -102,8 +102,8 @@ const Homepage: React.FC = () => {
           sx={{
             position: 'fixed',
             bottom: 20,
-            right: 20, 
-            zIndex: 1000, 
+            right: 20,
+            zIndex: 1000,
             backgroundColor: 'rgba(64, 155, 212, 0.5)',
             borderRadius: '50%',
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
@@ -126,16 +126,17 @@ const Homepage: React.FC = () => {
         <Modal open={open} onClose={handleClose}>
           <Box
             sx={{
-              position: 'absolute', 
+              position: 'absolute',
               top: '50%',
-              left: '50%', 
-              transform: 'translate(-50%, -50%)', 
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
               width: 400,
-              bgcolor: 'background.paper',
+              bgcolor: darkMode ? '#333' : '#fff',
+              color: darkMode ? '#fff' : '#000',
               boxShadow: 24,
               p: 4,
               borderRadius: '8px',
-              zIndex: 1200, 
+              zIndex: 1200,
             }}
           >
             <Typography
@@ -144,11 +145,11 @@ const Homepage: React.FC = () => {
               gutterBottom
               sx={{
                 fontWeight: 'bold',
-                color: '#333',
+                color: darkMode ? '#fff' : '#333',
                 textAlign: 'center',
                 marginBottom: 2,
                 padding: '8px 16px',
-                backgroundColor: '#f0f0f0',
+                backgroundColor: darkMode ? '#333' : '#f0f0f0',
                 borderRadius: '4px',
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
               }}
@@ -164,6 +165,7 @@ const Homepage: React.FC = () => {
                 value={form.name}
                 onChange={handleChange}
                 required
+                sx={{ input: { color: darkMode ? '#fff' : '#000' } }}
               />
               <TextField
                 fullWidth
@@ -173,6 +175,7 @@ const Homepage: React.FC = () => {
                 value={form.surname}
                 onChange={handleChange}
                 required
+                sx={{ input: { color: darkMode ? '#fff' : '#000' } }}
               />
               <TextField
                 fullWidth
@@ -183,6 +186,7 @@ const Homepage: React.FC = () => {
                 onChange={handleChange}
                 required
                 type="email"
+                sx={{ input: { color: darkMode ? '#fff' : '#000' } }}
               />
               <TextField
                 fullWidth
@@ -192,12 +196,13 @@ const Homepage: React.FC = () => {
                 value={form.plant}
                 onChange={handleChange}
                 required
+                sx={{ input: { color: darkMode ? '#fff' : '#000' } }}
               />
               <Button
                 fullWidth
                 variant="outlined"
                 component="label"
-                sx={{ mt: 2 }}
+                sx={{ mt: 2, color: darkMode ? '#fff' : '#000', borderColor: darkMode ? '#fff' : '#000' }}
               >
                 Upload Image
                 <input
@@ -225,7 +230,8 @@ const Homepage: React.FC = () => {
           </Box>
         </Modal>
       </Box>
-      <Footer />
+
+      <Footer darkMode={darkMode} />
     </Box>
   );
 };

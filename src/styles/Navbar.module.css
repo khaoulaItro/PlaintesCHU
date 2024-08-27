@@ -1,7 +1,6 @@
 .navbarContainer {
     position: fixed;
     top: 50px;
-   
     left: 0;
     width: 100%;
     padding: 1rem;
@@ -11,7 +10,6 @@
     align-items: center;
     gap: 1rem;
     z-index: 1;
-   
 }
 
 .menuButton {

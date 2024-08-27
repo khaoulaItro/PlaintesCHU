@@ -7,14 +7,19 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import MapComponent from '../components/MapComponent';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  darkMode: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ darkMode }) => {
   return (
     <Box
       sx={{
-        bgcolor: '#f0f0f0',
+        bgcolor: darkMode ? '#333' : '#f0f0f0', 
+        color: darkMode ? '#f0f0f0' : '#000', 
         padding: '2rem',
         textAlign: 'center',
-        borderTop: '1px solid #e0e0e0',
+        borderTop: `1px solid ${darkMode ? '#555' : '#e0e0e0'}`, 
         marginTop: '2rem',
       }}
     >
@@ -24,10 +29,9 @@ const Footer: React.FC = () => {
           justifyContent: 'space-between',
           alignItems: 'flex-start',
           flexWrap: 'wrap',
-          gap: '2rem', 
+          gap: '2rem',
         }}
       >
-       
         <Box sx={{ flex: 1 }}>
           <Typography variant="h6" gutterBottom>
             Coordonnées de l'Hôpital
@@ -44,18 +48,17 @@ const Footer: React.FC = () => {
 
           <Box sx={{ marginTop: '1rem' }}>
             <IconButton href="https://facebook.com" target="_blank" aria-label="Facebook">
-              <FacebookIcon fontSize="large" sx={{ color: '#4267B2' }} />
+              <FacebookIcon fontSize="large" sx={{ color: darkMode ? '#1877F2' : '#4267B2' }} />
             </IconButton>
             <IconButton href="https://instagram.com" target="_blank" aria-label="Instagram">
-              <InstagramIcon fontSize="large" sx={{ color: '#E1306C' }} />
+              <InstagramIcon fontSize="large" sx={{ color: darkMode ? '#C13584' : '#E1306C' }} />
             </IconButton>
             <IconButton href="https://twitter.com" target="_blank" aria-label="Twitter">
-              <TwitterIcon fontSize="large" sx={{ color: '#1DA1F2' }} />
+              <TwitterIcon fontSize="large" sx={{ color: darkMode ? '#1DA1F2' : '#1DA1F2' }} />
             </IconButton>
           </Box>
         </Box>
 
-        
         <Box
           sx={{
             flex: 1,
