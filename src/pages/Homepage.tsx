@@ -61,10 +61,10 @@ const Homepage: React.FC = () => {
     };
 
     try {
-      // Envoyer l'email de plainte à vous
+   
       await emailjs.send('service_jgawclq', 'template_gedzw5f', formObject, 'gTIz9zM9FyaFhrvU3');
       
-      // Envoyer l'email de confirmation à l'utilisateur
+     
       await emailjs.send('service_jgawclq', 'template_gxh492d', formObject, 'gTIz9zM9FyaFhrvU3');
       
       setSuccessMessage('Form submitted successfully! A confirmation email has been sent to you.');
