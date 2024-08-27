@@ -86,7 +86,7 @@ const Homepage: React.FC = () => {
 
         <Box
           sx={{
-            marginTop: '20px', // Adjust this value based on your layout
+            marginTop: '20px', 
             position: 'relative',
             zIndex: 1,
           }}
@@ -95,13 +95,13 @@ const Homepage: React.FC = () => {
           <ValuesCard />
         </Box>
 
-        {/* IconButton fixed in the corner of the page */}
+       
         <Box
           sx={{
-            position: 'fixed', // Fixed position
-            bottom: 20, // Distance from the bottom
-            right: 20, // Distance from the right
-            zIndex: 1000, // Ensure it is above other elements
+            position: 'fixed',
+            bottom: 20,
+            right: 20, 
+            zIndex: 1000, 
             backgroundColor: 'rgba(64, 155, 212, 0.5)',
             borderRadius: '50%',
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
@@ -121,20 +121,20 @@ const Homepage: React.FC = () => {
           </IconButton>
         </Box>
 
-        {/* Modal displayed on top of everything */}
+       
         <Modal open={open} onClose={handleClose}>
           <Box
             sx={{
-              position: 'absolute', // Position modal absolutely
-              top: '50%', // Center modal vertically
-              left: '50%', // Center modal horizontally
-              transform: 'translate(-50%, -50%)', // Adjust for centering
+              position: 'absolute', 
+              top: '50%',
+              left: '50%', 
+              transform: 'translate(-50%, -50%)', 
               width: 400,
               bgcolor: 'background.paper',
               boxShadow: 24,
               p: 4,
               borderRadius: '8px',
-              zIndex: 1200, // Ensure modal is above other elements
+              zIndex: 1200, 
             }}
           >
             <Typography
