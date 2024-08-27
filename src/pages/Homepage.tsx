@@ -72,13 +72,13 @@ const Homepage: React.FC = () => {
 
   return (
     <Box>
-      {/* Navbar and Header fixed at the top */}
+    
       <Box sx={{ position: 'fixed', width: '100%', top: 0, left: 0, zIndex: 1100 }}>
         <Navbar />
         <Header />
       </Box>
 
-      {/* Main content with top margin to avoid overlap with fixed Navbar and Header */}
+     
       <Box sx={{ marginTop: '100px', padding: '20px' }}>
         <Box sx={{ display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
           <CustomCard />
