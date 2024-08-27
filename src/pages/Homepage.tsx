@@ -61,8 +61,13 @@ const Homepage: React.FC = () => {
     };
 
     try {
+      // Envoyer l'email de plainte à vous
       await emailjs.send('service_jgawclq', 'template_gedzw5f', formObject, 'gTIz9zM9FyaFhrvU3');
-      setSuccessMessage('Form submitted successfully!');
+      
+      // Envoyer l'email de confirmation à l'utilisateur
+      await emailjs.send('service_jgawclq', 'template_gxh492d', formObject, 'gTIz9zM9FyaFhrvU3');
+      
+      setSuccessMessage('Form submitted successfully! A confirmation email has been sent to you.');
       handleClose();
     } catch (err) {
       console.error('Failed to send email', err);
@@ -72,13 +77,11 @@ const Homepage: React.FC = () => {
 
   return (
     <Box>
-    
       <Box sx={{ position: 'fixed', width: '100%', top: 0, left: 0, zIndex: 1100 }}>
         <Navbar />
         <Header />
       </Box>
 
-     
       <Box sx={{ marginTop: '100px', padding: '20px' }}>
         <Box sx={{ display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap' }}>
           <CustomCard />
@@ -95,7 +98,6 @@ const Homepage: React.FC = () => {
           <ValuesCard />
         </Box>
 
-       
         <Box
           sx={{
             position: 'fixed',
@@ -121,7 +123,6 @@ const Homepage: React.FC = () => {
           </IconButton>
         </Box>
 
-       
         <Modal open={open} onClose={handleClose}>
           <Box
             sx={{

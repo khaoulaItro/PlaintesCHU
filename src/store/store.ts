@@ -1,10 +1,10 @@
-// src/store/store.ts
+
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import rootReducer from './rootReducer'; // Assurez-vous que le chemin est correct
-import rootSaga from './rootSaga';       // Assurez-vous que le chemin est correct
+import rootReducer from './rootReducer'; 
+import rootSaga from './rootSaga';       
 
 const sagaMiddleware = createSagaMiddleware();
 

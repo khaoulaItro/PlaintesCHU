@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk';
 
-// Configure AWS SDK with your credentials
+
 AWS.config.update({
   accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID!,
   secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY!
@@ -14,13 +14,13 @@ export const uploadImageToS3 = async (file: File) => {
     Key: `images/${file.name}`,
     Body: file,
     ContentType: file.type,
-    ACL: 'public-read' // Ensure the file is publicly accessible
+    ACL: 'public-read' 
   };
 
   try {
     const data = await s3.upload(params).promise();
-    console.log('S3 Upload Data:', data); // Debugging information
-    return data.Location; // URL of the uploaded image
+    console.log('S3 Upload Data:', data); 
+    return data.Location; 
   } catch (err) {
     console.error('Error uploading image to S3', err);
     throw err;

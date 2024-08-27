@@ -24,10 +24,10 @@ const Footer: React.FC = () => {
           justifyContent: 'space-between',
           alignItems: 'flex-start',
           flexWrap: 'wrap',
-          gap: '2rem', // Ajoute un espace entre les éléments
+          gap: '2rem', 
         }}
       >
-        {/* Section des coordonnées de l'hôpital */}
+       
         <Box sx={{ flex: 1 }}>
           <Typography variant="h6" gutterBottom>
             Coordonnées de l'Hôpital
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
           </Box>
         </Box>
 
-        {/* Section de localisation avec la carte */}
+        
         <Box
           sx={{
             flex: 1,

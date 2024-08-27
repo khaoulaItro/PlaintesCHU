@@ -48,7 +48,7 @@ const ValuesCard = () => {
               backgroundImage: value.backgroundImage,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              color: 'white',  // Ensure text color is white for better contrast
+              color: 'white',  
               padding: '1rem',
               borderRadius: '8px',
               height: '200px',

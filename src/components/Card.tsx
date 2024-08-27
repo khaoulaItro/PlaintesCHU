@@ -143,7 +143,7 @@ const imageUrls = [
   'https://www.thechicagoschool.edu/insightadmin/2019/08/How-to-BSN-1024x538.jpg'
 ];
 
-// Composant NewCard1
+
 const NewCard1: React.FC<{ height: number }> = ({ height }) => {
   return (
     <Card
@@ -151,8 +151,8 @@ const NewCard1: React.FC<{ height: number }> = ({ height }) => {
         margin: 2,
         borderRadius: 2,
         boxShadow: 3,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fond noir transparent
-        color: 'white', // Texte blanc pour contraste
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+        color: 'white',
         height: 370,
         width: 990,
         display: 'flex',
@@ -161,7 +161,7 @@ const NewCard1: React.FC<{ height: number }> = ({ height }) => {
     >
       <CardContent
         sx={{ 
-          padding: 0, // Enlever les marges internes pour le contenu
+          padding: 0, 
           height: '100%' 
         }}
       >
@@ -170,7 +170,7 @@ const NewCard1: React.FC<{ height: number }> = ({ height }) => {
           showThumbs={false}
           infiniteLoop
           autoPlay
-          interval={5000} // Changer d'image toutes les 5 secondes
+          interval={5000}
           swipeable
           emulateTouch
           dynamicHeight
@@ -183,7 +183,7 @@ const NewCard1: React.FC<{ height: number }> = ({ height }) => {
                 style={{ 
                   width: '100%', 
                   height: '100%', 
-                  objectFit: 'cover', // Couvrir tout l'espace sans déformation
+                  objectFit: 'cover',
                   borderRadius: '8px' 
                 }}
               />

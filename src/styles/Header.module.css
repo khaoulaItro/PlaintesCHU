@@ -11,7 +11,7 @@
     align-items: center;
     z-index: 2;
     padding: 0;
-    /* Remove padding to allow full-width display */
+   
 }
 
 .logo-left,
@@ -21,7 +21,7 @@
     transform: translateY(-50%);
     height: 80%;
     z-index: 3;
-    /* Ensure logos stay above other content */
+    
 }
 
 .logo-left {
@@ -37,16 +37,16 @@
     top: 0;
     left: 0;
     width: 100%;
-    /* Ensure the content takes up the full width */
+    
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.6);
-    /* Background overlay */
+   
     z-index: 1;
     overflow: hidden;
-    /* Prevent overflow of content */
+    
 }
 
 .marquee {
@@ -56,7 +56,7 @@
     font-size: 1rem;
     white-space: nowrap;
     animation: marquee 15s linear infinite;
-    /* Marquee effect for text */
+
 }
 
 @keyframes marquee {

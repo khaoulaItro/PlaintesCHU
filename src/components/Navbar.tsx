@@ -131,7 +131,7 @@ const Navbar: React.FC = () => {
         PaperProps={{ 
           style: { 
             width: '300px',
-            backgroundColor: 'rgba(255, 255, 255, 0.9)', 
+            backgroundColor: 'rgba(26, 133, 214, 0.5)', 
           } 
         }}
       >
@@ -145,7 +145,7 @@ const Navbar: React.FC = () => {
           </MenuItem>
         ))}
         {speciality && doctors[speciality]?.map((doctor, docIndex) => (
-          <MenuItem key={docIndex} sx={{ display: 'flex', alignItems: 'center', padding: 1, backgroundColor: 'rgba(255, 255, 255, 0.3)' }}>
+          <MenuItem key={docIndex} sx={{ display: 'flex', alignItems: 'center', padding: 1, backgroundColor: 'rgba(26, 133, 214, 0.5)' }}>
             <Avatar src={doctor.image} alt={doctor.name} sx={{ width: 50, height: 50, marginRight: 1 }} />
             <Typography>{doctor.name}</Typography>
           </MenuItem>
