@@ -1,30 +1,22 @@
-
 import { configureStore } from '@reduxjs/toolkit';
-import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import rootReducer from './rootReducer'; 
-import rootSaga from './rootSaga';       
-
-const sagaMiddleware = createSagaMiddleware();
+import ratingsReducer from '../components/ratingsSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, ratingsReducer);
 
-const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }).concat(sagaMiddleware),
+export const store = configureStore({
+  reducer: {
+    ratings: persistedReducer,
+  },
 });
 
-const persistor = persistStore(store);
+export const persistor = persistStore(store);
 
-sagaMiddleware.run(rootSaga);
-
-export { store, persistor };
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

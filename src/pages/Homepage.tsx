@@ -13,7 +13,7 @@ import ValuesCard from '../components/ValuesCard';
 import Footer from '../components/Footer';
 import MotivationBox from '../components/MotivationBox';
 import emailjs from 'emailjs-com';
-
+import Footermap from '../components/footermap';
 interface HomepageProps {
   darkMode: boolean;
   toggleDarkMode: () => void;
@@ -31,12 +31,14 @@ const Homepage: React.FC<HomepageProps> = ({ darkMode, toggleDarkMode }) => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
     setSuccessMessage(null);
     setErrorMessage(null);
   };
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, files } = e.target;
@@ -45,6 +47,7 @@ const Homepage: React.FC<HomepageProps> = ({ darkMode, toggleDarkMode }) => {
       [name]: type === 'file' ? files?.[0] || null : value
     }));
   };
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -71,6 +74,11 @@ const Homepage: React.FC<HomepageProps> = ({ darkMode, toggleDarkMode }) => {
       console.error('Failed to send email', err);
       setErrorMessage('Failed to submit the form. Please try again later.');
     }
+  };
+
+  const handleRatingSubmit = (rating: number) => {
+    console.log('Rating submitted:', rating);
+
   };
 
   return (
@@ -231,7 +239,8 @@ const Homepage: React.FC<HomepageProps> = ({ darkMode, toggleDarkMode }) => {
         </Modal>
       </Box>
 
-      <Footer darkMode={darkMode} />
+      <Footer darkMode={darkMode} onRatingSubmit={handleRatingSubmit} />
+       <Footermap darkMode={darkMode} onRatingSubmit={handleRatingSubmit} />
     </Box>
   );
 };

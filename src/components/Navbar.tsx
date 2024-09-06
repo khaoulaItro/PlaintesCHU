@@ -1,12 +1,15 @@
 import React from 'react';
-import { Button, Typography, Box, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, TextField, Popover, MenuItem, Avatar } from '@mui/material';
+import { Button, Typography, Box, IconButton, Drawer, TextField, Popover, MenuItem, Avatar } from '@mui/material';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import PersonIcon from '@mui/icons-material/Person';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import SearchIcon from '@mui/icons-material/Search';
-import InboxIcon from '@mui/icons-material/Inbox';
-import MailIcon from '@mui/icons-material/Mail';
+import HomeIcon from '@mui/icons-material/Home';
+import MenuBookIcon from '@mui/icons-material/MenuBook'; 
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital'; 
+import ReceiptIcon from '@mui/icons-material/Receipt'; 
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/Navbar.module.css';
 
 interface NavbarProps {
@@ -28,9 +31,10 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [speciality, setSpeciality] = React.useState<string | null>(null);
   const [search, setSearch] = React.useState<string>('');
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [drawerOpen, setDrawerOpen] = React.useState(false); 
+  const navigate = useNavigate();
 
-  const handleButtonClick = (event: React.MouseEvent<HTMLElement>, name: string) => {
+  const handleIconClick = (event: React.MouseEvent<HTMLElement>, name: string) => {
     setAnchorEl(event.currentTarget);
     setSpeciality(name);
   };
@@ -45,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
   };
 
   const handlePersonIconClick = () => {
-    setDrawerOpen(true);
+    navigate('/login'); 
   };
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -55,17 +59,14 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
     setDrawerOpen(open);
   };
 
+  const handleHomeClick = () => {
+    navigate('/'); 
+  };
+
   const menuItems = [
-    { name: 'Home', submenu: null },
-    { 
-      name: 'Departments', 
-      submenu: ['IT', 'Administrative', 'Pharmacy', 'Emergency'] 
-    },
-    { 
-      name: 'Doctors', 
-      submenu: ['Cardiology', 'Neurology', 'Orthopedics', 'Pediatrics'] 
-    },
-    { name: 'Patients', submenu: null },
+    { name: 'Departments', icon: <MenuBookIcon />, submenu: ['IT', 'Administrative', 'Pharmacy', 'Emergency'] },
+    { name: 'Doctors', icon: <LocalHospitalIcon />, submenu: ['Cardiology', 'Neurology', 'Orthopedics', 'Pediatrics'] },
+    { name: 'Patients', icon: <ReceiptIcon />, submenu: null },
   ];
 
   const doctors: Doctors = {
@@ -87,51 +88,27 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
     ],
   };
 
-  const list = () => (
-    <Box
-      sx={{ width: 250 }}
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        {['Profile', 'Settings', 'Logout'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
   return (
     <Box className={styles.navbarContainer} sx={{ display: 'flex', alignItems: 'center', bgcolor: darkMode ? 'background.default' : 'background.paper' }}>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        
+        <IconButton
+          color="inherit"
+          onClick={handleHomeClick}
+          sx={{ marginRight: 2, color: darkMode ? 'yellow' : 'grey' }} 
+        >
+          <HomeIcon />
+        </IconButton>
+
         {menuItems.map((item, index) => (
-          <Button
+          <IconButton
             key={index}
-            variant="contained"
-            onClick={(event) => handleButtonClick(event, item.name)}
-            className={styles.menuButton} 
-            endIcon={item.submenu ? <ExpandMore /> : null}
-            sx={{ marginRight: 2 }} 
+            color="inherit"
+            onClick={(event) => handleIconClick(event, item.name)}
+            sx={{ marginRight: 2, color: darkMode ? 'yellow' : 'grey' }}
           >
-            {item.name}
-          </Button>
+            {item.icon}
+          </IconButton>
         ))}
       </Box>
       <Box sx={{ flexGrow: 1, marginLeft: 2 }}>
@@ -170,7 +147,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
         open={drawerOpen}
         onClose={toggleDrawer(false)}
       >
-        {list()}
+      
       </Drawer>
 
       <Popover
